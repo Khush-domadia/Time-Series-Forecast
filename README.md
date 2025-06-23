@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project focuses on forecasting Germany's weekly electricity consumption using various time series modeling techniques. The analysis utilizes publicly available data from Open Power System Data (OPSD) spanning from 2006 to 2017, implementing multiple forecasting approaches to identify the most accurate model for energy planning and policy decision-making.[1]
+This project focuses on forecasting Germany's weekly electricity consumption using various time series modeling techniques. The analysis utilizes publicly available data from Open Power System Data (OPSD) spanning from 2006 to 2017, implementing multiple forecasting approaches to identify the most accurate model for energy planning and policy decision-making.
 
 ## Authors
 
@@ -31,50 +31,50 @@ The original daily consumption data was aggregated into weekly totals using Exce
 - **Random Walk Test**: AR(1) model fitting with z-test to confirm data is not a random walk[1]
 
 ### 2. Data Partitioning
-- **Training Set**: 2006 to specified end period[1]
-- **Validation Set**: 208 weeks for model validation[1]
-- **Total Observations**: 624 weekly observations (52 weeks × 12 years)[1]
+- **Training Set**: 2006 to specified end period
+- **Validation Set**: 208 weeks for model validation
+- **Total Observations**: 624 weekly observations (52 weeks × 12 years)
 
 ### 3. Forecasting Models Implemented
 
 #### Model 1: Holt-Winters Exponential Smoothing
-- Triple exponential smoothing capturing trend and seasonality[1]
+- Triple exponential smoothing capturing trend and seasonality
 - Automatic parameter optimization
 - Forecast horizon: 52 weeks
 
 #### Model 2: Moving Average on Residuals
-- Trailing moving average (k=4) applied to residuals[1]
+- Trailing moving average (k=4) applied to residuals
 - Combined with base forecasting methods
 - Enhanced accuracy through residual modeling
 
 #### Model 3: Seasonal Regression Model
-- Linear regression with seasonal dummy variables[1]
+- Linear regression with seasonal dummy variables
 - `tslm(train.ts ~ season)` implementation
 - Captures systematic seasonal patterns
 
 #### Model 4: Two-Level Combined Forecasting
-- Integration of seasonal regression with trailing MA on residuals[1]
+- Integration of seasonal regression with trailing MA on residuals
 - `tot.fst.2level` combining multiple forecast components
 - Enhanced accuracy through ensemble approach
 
 #### Model 5: ARIMA Models
-- **Auto ARIMA**: Automatic model selection using `auto.arima()`[1]
-- **Seasonal ARIMA**: ARIMA(0,1,2)(0,1,1) model for full dataset[1]
+- **Auto ARIMA**: Automatic model selection using `auto.arima()`
+- **Seasonal ARIMA**: ARIMA(0,1,2)(0,1,1) model for full dataset
 - Residual diagnostics using ACF plots
 
 ## Key Features
 
 ### Technical Implementation
-- **Libraries Used**: `forecast`, `zoo`, `ggplot2`[1]
-- **Time Series Object**: 52-week frequency ts object (2006-2017)[1]
-- **Visualization**: Both base R and ggplot2 implementations[1]
+- **Libraries Used**: `forecast`, `zoo`, `ggplot2`
+- **Time Series Object**: 52-week frequency ts object (2006-2017)
+- **Visualization**: Both base R and ggplot2 implementations
 - **Model Comparison**: Comprehensive accuracy metrics
 
 ### Model Evaluation Metrics
 - **RMSE** (Root Mean Square Error)
 - **MAPE** (Mean Absolute Percentage Error)
 - **MAE** (Mean Absolute Error)
-- Comparison against naive and seasonal naive benchmarks[1]
+- Comparison against naive and seasonal naive benchmarks
 
 ## Code Highlights
 
@@ -98,20 +98,20 @@ tot.fst.2level.elec <- elec.season.pred$mean + elec.ma.trail.res.pred$mean
 ## Results and Model Performance
 
 The project implements comprehensive accuracy testing across all models using the `accuracy()` function, comparing:
-- Holt-Winters exponential smoothing performance[1]
-- Seasonal regression model accuracy[1]
-- ARIMA model effectiveness[1]
-- Combined forecasting approach results[1]
-- Benchmark comparisons with naive methods[1]
+- Holt-Winters exponential smoothing performance
+- Seasonal regression model accuracy
+- ARIMA model effectiveness
+- Combined forecasting approach results
+- Benchmark comparisons with naive methods
 
 ## Visualizations
 
 The project includes multiple visualization types:
-- **Historical Data Plots**: Complete time series with custom formatting[1]
-- **Decomposition Charts**: STL component analysis[1]
-- **Forecast Plots**: Model predictions with confidence intervals[1]
-- **Residual Analysis**: Autocorrelation diagnostics[1]
-- **Model Comparison**: Overlay plots of different forecasting approaches[1]
+- **Historical Data Plots**: Complete time series with custom formatting
+- **Decomposition Charts**: STL component analysis
+- **Forecast Plots**: Model predictions with confidence intervals
+- **Residual Analysis**: Autocorrelation diagnostics
+- **Model Comparison**: Overlay plots of different forecasting approaches
 
 ## Requirements
 
@@ -124,8 +124,8 @@ library(ggplot2)
 ```
 
 ### Data Requirements
-- CSV file named `Book1.csv` with weekly consumption data[1]
-- Column named `Consumption` containing numerical values[1]
+- CSV file named `Book1.csv` with weekly consumption data
+- Column named `Consumption` containing numerical values
 
 ## Usage
 
@@ -143,24 +143,24 @@ library(ggplot2)
    ```
 
 3. **Run Analysis**:
-   Execute the complete R script to perform all analyses and generate forecasts[1]
+   Execute the complete R script to perform all analyses and generate forecasts
 
 4. **View Results**:
-   The script generates multiple plots and accuracy metrics for model comparison[1]
+   The script generates multiple plots and accuracy metrics for model comparison
 
 ## Key Findings
 
 The analysis demonstrates that Germany's electricity consumption exhibits:
-- **Strong Seasonality**: Clear weekly and annual patterns[1]
-- **Predictable Structure**: Non-random walk behavior confirmed through statistical testing[1]
-- **Forecast Accuracy**: Multiple models provide reliable predictions for energy planning[1]
+- **Strong Seasonality**: Clear weekly and annual patterns
+- **Predictable Structure**: Non-random walk behavior confirmed through statistical testing
+- **Forecast Accuracy**: Multiple models provide reliable predictions for energy planning
 
 ## Applications
 
 This forecasting model supports:
-- **Energy Planning**: Strategic capacity planning for electricity providers[1]
-- **Policy Decision-Making**: Data-driven insights for energy policy[1]
-- **Resource Management**: Optimized electricity distribution planning[1]
+- **Energy Planning**: Strategic capacity planning for electricity providers
+- **Policy Decision-Making**: Data-driven insights for energy policy
+- **Resource Management**: Optimized electricity distribution planning
 
 ## Future Enhancements
 
