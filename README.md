@@ -6,7 +6,7 @@ This project focuses on forecasting Germany's weekly electricity consumption usi
 
 ## Authors
 
-- **Khush Domadiya** (fr9739)
+- **Khush Domadiya** 
 
 ## Dataset Information
 
